@@ -31,7 +31,14 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+	
+    <!--baidu map  -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具" />
+    <meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图" />
+    <title>百度地图API自定义地图</title>
+    <!--引用百度地图API-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=m3H3sS9IRtDGYvNkvj0TGBNq8E7IKPl1"></script>
 </head>
 
 <body id="page-top">
@@ -82,11 +89,14 @@
     <section class="bg-primary" id="about">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">We've got what you need!</h2>
-                    <hr class="light">
-                    <p class="text-faded">这里是测试段落</p>
-                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
+                <div class="col-lg-8 col-lg-offset-2 text-center">               				
+                    <!--<hr class="light">  -->
+                    <p class="text-faded">英语发音不准确，羞于出口？</p> 
+					<p class="text-faded">话在嘴边却无法用英语表达出来？</p> 
+					<p class="text-faded">厌倦填鸭式英语教学，却找不到好的学习方法？</p> 
+					<hr>
+                    <h2 class="section-heading">来进化英语，发现不一样的英语学习</h2>
+                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">现在开始!</a>
                 </div>
             </div>
         </div>
@@ -98,13 +108,14 @@
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/fullsize/1.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
+						<!--图片上的文字--->
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    学校环境
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    优美温馨的教学环境
                                 </div>
                             </div>
                         </div>
@@ -116,10 +127,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    课上氛围
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    有趣有效的英语互动
                                 </div>
                             </div>
                         </div>
@@ -131,10 +142,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    课外活动
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    丰富多彩的课外活动
                                 </div>
                             </div>
                         </div>
@@ -236,9 +247,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">联系我们！</h2>
+                    <h2 class="section-heading">联系我们</h2>
                     <hr class="primary">
-                    <p>请加微信预约试听我们的课程</p>
+                    <p>地址：四川省成都市武侯区新希望路XX号XX楼</p>
                 </div>
                 <div class="col-lg-4 text-center">
                     <i class="fa fa-phone fa-3x sr-contact"></i>
@@ -256,6 +267,9 @@
         </div>
     </section>
 	
+	<!-- baidu map -->
+	
+	
     <!-- Footer 文档的页脚 -->
     <footer>
         <div class="container">
@@ -266,7 +280,14 @@
             </div>
         </div>
     </footer>
-
+     <!--百度地图容器-->
+	 
+    <div style="width:700px;height:550px;border:#ccc solid 1px;font-size:12px" id="map"></div>
+    <p style="color:red;font-weight:600">地图生成工具基于百度地图JS api v2.0版本开发，使用请申请密匙。
+      <a href="http://developer.baidu.com/map/index.php?title=jspopular/guide/introduction" style="color:#2f83c7" target="_blank">了解如何申请密匙</a>
+      <a href="http://lbsyun.baidu.com/apiconsole/key?application=key" style="color:#2f83c7" target="_blank">申请密匙</a>
+    </p>
+	
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
 
@@ -280,7 +301,64 @@
 
     <!-- Theme JavaScript -->
     <script src="js/creative.min.js"></script>
-
+     
 </body>
-
+    <!-- baidu map -->
+     <script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+      createMap();//创建地图
+      setMapEvent();//设置地图事件
+      addMapControl();//向地图添加控件
+      addMapOverlay();//向地图添加覆盖物
+    }
+    function createMap(){ 
+      map = new BMap.Map("map"); 
+      map.centerAndZoom(new BMap.Point(104.079404,30.620413),19);
+    }
+    function setMapEvent(){
+      map.enableScrollWheelZoom();
+      map.enableKeyboard();
+      map.enableDragging();
+      map.enableDoubleClickZoom()
+    }
+    function addClickHandler(target,window){
+      target.addEventListener("click",function(){
+        target.openInfoWindow(window);
+      });
+    }
+    function addMapOverlay(){
+      var markers = [
+        {content:"",title:"曼哈顿二期",imageOffset: {width:0,height:3},position:{lat:30.620665,lng:104.079152}}
+      ];
+      for(var index = 0; index < markers.length; index++ ){
+        var point = new BMap.Point(markers[index].position.lng,markers[index].position.lat);
+        var marker = new BMap.Marker(point,{icon:new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png",new BMap.Size(20,25),{
+          imageOffset: new BMap.Size(markers[index].imageOffset.width,markers[index].imageOffset.height)
+        })});
+        var label = new BMap.Label(markers[index].title,{offset: new BMap.Size(25,5)});
+        var opts = {
+          width: 200,
+          title: markers[index].title,
+          enableMessage: false
+        };
+        var infoWindow = new BMap.InfoWindow(markers[index].content,opts);
+        marker.setLabel(label);
+        addClickHandler(marker,infoWindow);
+        map.addOverlay(marker);
+      };
+    }
+    //向地图添加控件
+    function addMapControl(){
+      var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+      scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+      map.addControl(scaleControl);
+      var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+      map.addControl(navControl);
+      var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+      map.addControl(overviewControl);
+    }
+    var map;
+      initMap();
+  </script>
 </html>
