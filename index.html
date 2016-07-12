@@ -37,6 +37,96 @@
 	
     <!--引用百度地图API-->
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=m3H3sS9IRtDGYvNkvj0TGBNq8E7IKPl1"></script>
+	<!--测试magnific popup-->
+	<!--展示相册中的图片-->
+	<script>
+        function displayEvironments()
+        {
+          $.magnificPopup.open({
+          items: [
+            {
+                src: "img/environment/1.jpg",
+                title: 'Peter & Paul fortress in SPB'
+            },
+            {
+              src:  "img/environment/2.jpg",
+              title: 'Peter & Paul fortress in SPB' // this overrides default type
+            },
+            {
+              src: "img/environment/3.jpg",
+              title: 'Peter & Paul fortress in SPB'
+            },
+            {
+              src: "img/environment/4.jpg",
+              title: 'Peter & Paul fortress in SPB'
+            },
+          ],
+          gallery: {
+            enabled: true
+          },
+          type: 'image' // this is a default type
+         });
+        }
+    </script>
+	<script>
+        function displayOnClass()
+        {
+          $.magnificPopup.open({
+          items: [
+            {
+                src: "img/environment/4.jpg",
+                title: 'Peter & Paul fortress in SPB'
+            },
+            {
+              src: "img/environment/4.jpg",
+              title: 'Peter & Paul fortress in SPB' // this overrides default type
+            },
+            {
+              src: "img/environment/4.jpg",
+              title: 'Peter & Paul fortress in SPB'
+            },
+            {
+              src: "img/environment/4.jpg",
+              title: 'Peter & Paul fortress in SPB'
+            },
+          ],
+          gallery: {
+            enabled: true
+          },
+          type: 'image' // this is a default type
+         });
+        }
+    </script>
+	<script>
+        function displayAfterClass()
+        {
+          $.magnificPopup.open({
+		  //下面是想显示的所有图片
+          items: [
+            {
+                src: "img/environment/4.jpg",
+                title: 'Peter & Paul fortress in SPB'
+            },
+            {
+              src: "img/environment/4.jpg",
+              title: 'Peter & Paul fortress in SPB' // this overrides default type
+            },
+            {
+              src: "img/environment/4.jpg",
+              title: 'Peter & Paul fortress in SPB'
+            },
+            {
+              src: "img/environment/4.jpg",
+              title: 'Peter & Paul fortress in SPB'
+            },
+          ],
+          gallery: {
+            enabled: true
+          },
+          type: 'image' // this is a default type
+         });
+        }
+    </script>
 </head>
 
 <body id="page-top">
@@ -80,7 +170,8 @@
 				<h1 id="homeHeading_cn">进化英语</h1>
                 <hr>
                 <p>Start an amazing tour with us </p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">更多信息</a>            </div>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">更多信息</a>                   		
+			</div>
         </div>
     </header>
 
@@ -102,9 +193,9 @@
 
     <section class="no-padding" id="portfolio">
         <div class="container-fluid">
-            <div class="row no-gutter popup-gallery">
+            <div class="row no-gutter">
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/1.jpg" class="portfolio-box">
+                    <a href=### onclick="displayEvironments()"  class="portfolio-box">
                         <img src="img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
 						<!--图片上的文字--->
                         <div class="portfolio-box-caption">
@@ -120,7 +211,7 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/2.jpg" class="portfolio-box">
+                    <a href=### onclick="displayOnClass()" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/2.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -135,7 +226,7 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/3.jpg" class="portfolio-box">
+                    <a href=### onclick="displayAfterClass()" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/3.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -268,11 +359,11 @@
 	
             </div>
 			<div class="row">
-			    <div class="col-lg-4 col-lg-offset-2 text-center">
+			    <div class="col-md-4 col-md-offset-2 col-lg-4 col-lg-offset-2 text-center">
 				     <img src="img/other/psb.jpg" class="img-responsive" alt="">
 				</div>
 				 <!--百度地图容器-->				
-				<div class="col-lg-4 img-responsive " style="width:380px;height:360px;font-size:12px" id="map"></div>	
+				<div class="col-md-4 col-lg-4 img-responsive " style="width:380px;height:360px;font-size:12px" id="map"></div>	
 			</div>
         </div>
     </section>
@@ -305,7 +396,7 @@
      
 </body>
     <!-- baidu map -->
-     <script type="text/javascript">
+  <script type="text/javascript">
     //创建和初始化地图函数：
     function initMap(){
       createMap();//创建地图
