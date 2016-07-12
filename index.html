@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+	<meta name="keywords" content="英语培训,英语学习,英语,英语教育">
 
     <title>Evolve English</title>
 
@@ -93,7 +94,7 @@
 					<p class="text-faded">厌倦填鸭式英语教学，却找不到好的学习方法？</p> 
 					<hr>
                     <h2 class="section-heading">来进化英语，发现不一样的英语学习</h2>
-                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">现在开始!</a>
+                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">现在开始！</a>
                 </div>
             </div>
         </div>
@@ -201,7 +202,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">At Your Service</h2>
+                    <h2 class="section-heading">特色服务</h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -243,7 +244,7 @@
     <section id="contact">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
+                <div class="col-lg-12  text-center">
                     <h2 class="section-heading">联系我们</h2>
                     <hr class="primary">       
                     <p> 因业务繁忙，请微信扫描下方二维码，提前预约试听</p>					
@@ -264,12 +265,15 @@
 				    <i class="fa fa-location-arrow fa-3x sr-contact" aria-hidden="true"></i>
 					<p>四川省成都市武侯区新希望路XX号XX楼</p>
 				</div>
-				<div class="col-lg-4 col-lg-offset-2 text-center">
-					 <img src="img/other/psb.jpg" " alt="">
+	
+            </div>
+			<div class="row">
+			    <div class="col-lg-4 col-lg-offset-2 text-center">
+				     <img src="img/other/psb.jpg" class="img-responsive" alt="">
 				</div>
 				 <!--百度地图容器-->				
-				<div class="col-lg-4   text-center" style="width:400px;height:400px;border:#ccc solid 1px;font-size:12px" id="map"></div>	
-            </div>
+				<div class="col-lg-4 img-responsive " style="width:380px;height:360px;font-size:12px" id="map"></div>	
+			</div>
         </div>
     </section>
 	
@@ -311,13 +315,15 @@
     }
     function createMap(){ 
       map = new BMap.Map("map"); 
-      map.centerAndZoom(new BMap.Point(104.079404,30.620413),19);
+      map.centerAndZoom(new BMap.Point(104.079202,30.620620),19);
+	  //map.removeControl(overView);
     }
     function setMapEvent(){
       map.enableScrollWheelZoom();
       map.enableKeyboard();
       map.enableDragging();
-      map.enableDoubleClickZoom()
+      map.enableDoubleClickZoom();
+	  map.enableAutoResize();
     }
     function addClickHandler(target,window){
       target.addEventListener("click",function(){
@@ -326,13 +332,11 @@
     }
     function addMapOverlay(){
       var markers = [
-        {content:"",title:"曼哈顿二期",imageOffset: {width:0,height:3},position:{lat:30.620665,lng:104.079152}}
+        {content:"",title:"曼哈顿二期",imageOffset: {width:0,height:3},position:{lat:30.620620,lng:104.079202}}
       ];
       for(var index = 0; index < markers.length; index++ ){
         var point = new BMap.Point(markers[index].position.lng,markers[index].position.lat);
-        var marker = new BMap.Marker(point,{icon:new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png",new BMap.Size(20,25),{
-          imageOffset: new BMap.Size(markers[index].imageOffset.width,markers[index].imageOffset.height)
-        })});
+        var marker = new BMap.Marker(point);
         var label = new BMap.Label(markers[index].title,{offset: new BMap.Size(25,5)});
         var opts = {
           width: 200,
@@ -340,20 +344,19 @@
           enableMessage: false
         };
         var infoWindow = new BMap.InfoWindow(markers[index].content,opts);
-        marker.setLabel(label);
         addClickHandler(marker,infoWindow);
         map.addOverlay(marker);
       };
     }
     //向地图添加控件
     function addMapControl(){
-      var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
-      scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
-      map.addControl(scaleControl);
+      //var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+      //scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+      //map.addControl(scaleControl);
       var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
       map.addControl(navControl);
-      var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
-      map.addControl(overviewControl);
+     // var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+     // map.addControl(overviewControl);
     }
     var map;
       initMap();
